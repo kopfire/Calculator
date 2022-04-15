@@ -8,14 +8,16 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         while (true) {
             String input = sc.nextLine();
-            String[] arrayInput = input.split("[+*\\-/]");
+            if (input.equals("exit"))
+                break;
+            String[] arrayInput = Arrays.stream(input.split("[+*\\-/]")).map(String::trim).toArray(String[]::new);
             if (arrayInput.length != 2 || input.contains("."))
                 throw new Exception("Invalid input");
             if (arrayInput[0].matches(" *\\d+ *") && arrayInput[1].matches(" *\\d+ *"))
-                System.out.println(math(input, Integer.parseInt(arrayInput[0].trim()), Integer.parseInt(arrayInput[1].trim())));
+                System.out.println(math(input, Integer.parseInt(arrayInput[0]), Integer.parseInt(arrayInput[1])));
             else {
-                int x = toArabian(arrayInput[0].trim());
-                int y = toArabian(arrayInput[1].trim());
+                int x = toArabian(arrayInput[0]);
+                int y = toArabian(arrayInput[1]);
                 if (x == -1 || y == -1)
                     throw new Exception("Invalid input");
 
