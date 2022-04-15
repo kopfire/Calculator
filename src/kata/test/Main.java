@@ -16,7 +16,7 @@ public class Main {
             else {
                 int x = toArabian(arrayInput[0].trim());
                 int y = toArabian(arrayInput[1].trim());
-                if (toArabian(arrayInput[0].trim()) == -1 || toArabian(arrayInput[1].trim()) == -1)
+                if (x == -1 || y == -1)
                     throw new Exception("Invalid input");
 
                 int result = math(input, x, y);
