@@ -18,11 +18,8 @@ public class Main {
             else {
                 int x = toArabian(arrayInput[0]);
                 int y = toArabian(arrayInput[1]);
-                if (x == -1 || y == -1)
-                    throw new Exception("Invalid input");
-
                 int result = math(input, x, y);
-                if (result < 0)
+                if (result <= 0)
                     throw new Exception("Invalid output");
                 System.out.println(toRoman(result));
             }
@@ -68,7 +65,9 @@ public class Main {
         return number;
     }
 
-    public static int math(String input, int x, int y) {
+    public static int math(String input, int x, int y) throws Exception {
+        if (x < 1 || y < 1 || x > 10 || y > 10)
+            throw new Exception("Invalid input");
         if (input.contains("*"))
             return x * y;
         if (input.contains("-"))
